@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #FFF7D4;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .task-input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      
+    }
+
+    .task-button {
+      display: block;
+      width: 30%;
+      padding: 10px;
+      margin: 0% 35%;
+      background-color: #643843;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      
+    }
+
+    .task-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .task-item {
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List Application</h1>
+    <input type="text" id="taskInput" class="task-input" placeholder="Enter a new task">
+    <button onclick="addTask()" class="task-button">Add Task</button>
+    <ul id="taskList" class="task-list"></ul>
+  </div>
+
+  <script>
+    // Array to store tasks
+    let tasks = [];
+
+    // Function to add a new task
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const task = taskInput.value.trim();
+
+      if (task !== "") {
+        tasks.push(task);
+        taskInput.value = "";
+        renderTasks();
+      }
+    }
+
+    // Function to render the tasks on the UI
+    function renderTasks() {
+      const taskList = document.getElementById("taskList");
+      taskList.innerHTML = "";
+
+      tasks.forEach(function(task) {
+        const li = document.createElement("li");
+        li.textContent = task;
+        li.classList.add("task-item");
+        taskList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
